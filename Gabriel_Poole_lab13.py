@@ -1,8 +1,14 @@
+#Goal- Let cars, truck, and motorcycle class inherit from Vehicle and be able to add them to VehicleInventory
+#Issue- too many arguements when attempting to use super()
+
+#Global variables for price calculation
 tax=1.065
 liscensePlate=15.50
 motorPlate=13.50
 dealerMarkup=2000
 title=8.25
+
+#Classes
 class Vehicle:
 	def __init__(self,make,model,year,VIN,price):
 		self.make=make
