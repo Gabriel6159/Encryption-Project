@@ -1,5 +1,6 @@
 '''
-Changes have been made, it seems to almost work, but it outputs none instead of a bracket when I decrypt it
+For some reason when I try to multiply two numbers on line 38, the program spits out an error
+It says that charNum is a NoneType variable, and I have no idea why
 '''
 #Extras if time:
 #	Spaces can be a range of numbers multiplied by key or a symbol not used
@@ -23,7 +24,7 @@ class Key:
 		return self.key
 	def firstCharNum(self):
 		return charToInt(self.firstChar)
-#Gives each character a numerical value
+#Gives each item a corresponding character or integer with a for loop
 def charToInt(char):
 	for n in range(0,len(charList)):
 		if char==charList[n]:
@@ -50,18 +51,18 @@ char=""
 number=0
 encodeNum=0
 
-#User initializes these variables
+#User must initialize these variables
 print('This program allows you to Encrypt or Decrypt a specified file. It only accepts .txt files. You can also specify whether the original file should be deleted or not. \n')
 encodeDecode=input('Encrypt or Decrypt? (E or D): ')
 #key=input('Enter Key: ')
 key='32df9v0283uj' #Hardcoded Key
 keyObj=Key(key,len(key),key[0])
-filename='EncryptedEncodeNumList'#input('Enter File Name (do not add extension): ')
-filename=filename+'.txt'
+filename='EncodeThis'#input('Enter File Name (do not add extension): ')
+filename+='.txt'
 eraseFile='N'#input('Erase original file? (Y or N): ')
 userFile=open(filename,'r')
 
-#Reads and encodes selected file
+#Reads selected file and sends each character through translator
 if encodeDecode=='E' or encodeDecode=='e':
 	for line in userFile:
 		for char in line:
@@ -76,7 +77,7 @@ else:
 			if item!=None:
 				decodedChar=charNumDecode(item)
 				output+=str(intToChar(decodedChar))
-#Cleaning up
+#Cleaning up old files
 if eraseFile=='Y' or eraseFile=='y':
 	userFile=open(filename,'w')
 	userFile.write(' ')
